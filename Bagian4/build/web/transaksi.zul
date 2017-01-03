@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win" ?>-->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    
+<window id="win" border="normal" width="100%" height="100%" title="Transaksi" apply="control.transaksi">
+<panel>
+<panelchildren>
+<grid>
+    <columns>
+        <column width="170px"/>
+        <column width="580px"/>
+    </columns>
+    
+    <rows>
+        <row>
+            <label value="Cari Transaksi By Keterangan" style="font-weight:bold;color:red"/>
+            <hbox>
+            <textbox id="txtCariTransaksi" width="250px" />
+            <button  id="btnTampilTransaksi" label="Cari" image="../image/cari.png" />
+            </hbox>
+        </row>
+        <row>
+            <label value="ID"/>
+            <textbox value="@{win$composer.objekBarisTransaksi.idtransaksi, load-after='lstTransaksi.onSelect, btnTampilTransaksi.onClick, btnTambah.onClick'}" width="50px" readonly="true"/>
+        </row>
+        <row>
+            <label value="Item"/>
+            <combobox id="cmbItem" model="@{win$composer.listItem, load-after='win.onCreate'}" value="@{win$composer.objekBarisTransaksi.iditem, converter='converter.combobox_value', load-after='lstTransaksi.onSelect, btnTampilTransaksi.onClick, btnTambah.onClick'}" autocomplete="true">
+            <comboitem forEach="@{win$composer.listItem}" self="@{each='objekBarisItem'}" label="@{objekBarisItem.namaitem}" value="@{objekBarisItem.iditem}" />
+            </combobox>
+        </row>
+        <row>
+            <label value="Tanggal"/>
+            <datebox id="dateTanggal" value="@{win$composer.objekBarisTransaksi.tgltransaksi, load-after='lstTransaksi.onSelect, btnTampilTransaksi.onClick, btnTambah.onClick', converter='converter.tanggal_date'}"  format="dd-MM-yyyy" width="500px"/>
+        </row>
+        <row>
+            <label value="Nominal"/>
+            <intbox id="intNominal" value="@{win$composer.objekBarisTransaksi.nominal, load-after='lstTransaksi.onSelect, btnTampilTransaksi.onClick, btnTambah.onClick'}" width="500px" />
+        </row>
+        <row>
+            <label value="Keterangan"/>
+            <textbox id="txtKeterangan" value="@{win$composer.objekBarisTransaksi.keterangan, load-after='lstTransaksi.onSelect, btnTampilTransaksi.onClick, btnTambah.onClick'}" width="500px" maxlength="100"/>
+        </row>
+        
+        <row spans="2">
+            <hbox>
+                <button id="btnTambah" label="Tambah" image="../image/tambah.png" />
+                <button id="btnSimpan" label="Simpan" image="../image/simpan.png" />
+                <button id="btnBatal"  label="Batal" image="../image/batal.png" />
+                <button id="btnHapus"  label="Hapus" image="../image/hapus.png" />
+            </hbox>
+        </row>
+    </rows>
+</grid>
+
+<listbox id="lstTransaksi" rows="10" mold="paging" pageSize="10" pagingPosition="top" style="margin-top:5px" model="@{win$composer.listTransaksi, load-after='win.onCreate, btnTampilTransaksi.onClick, btnSimpan.onClick, btnTambah.onClick, btnBatal.onClick, btnHapus.onClick'}" selectedItem="@{win$composer.objekBarisTransaksi}">
+    <listhead>
+        <listheader label="I D" width="100px"/>
+        <listheader label="Tgl" width="100px"/>
+        <listheader label="Keterangan" width="400px"/>
+    </listhead>
+    <listitem forEach="@{win$composer.listTransaksi}" self="@{each='objekBarisTransaksi'}" value="@{objekBarisTransaksi}" >
+        <listcell label="@{objekBarisTransaksi.idtransaksi}"/>
+        <listcell label="@{objekBarisTransaksi.tgltransaksi, converter='converter.tanggal_string'}"/>
+        <listcell label="@{objekBarisTransaksi.keterangan}"/>
+    </listitem>
+</listbox>
+
+</panelchildren>
+</panel>
+</window>
+</zk>

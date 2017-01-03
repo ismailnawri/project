@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win" ?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+
+    <window id="win" border="normal" width="100%" height="100%" apply="control.utama">
+    <div height="45px" style="background-color:teal">
+        <vbox>
+            <label value="Personal Finance Management" style="font-size:14px;font-weight:bold;color:#ffffff;"/>
+            <hbox align="center">
+                <label value="Anda Login Sebagai: " />
+                <label id="lblUser" value="" />
+            </hbox>
+        </vbox>
+    </div>
+    <menubar style="margin-bottom:5px" zindex="0">
+        <menuitem label="Home" href="home.html" image="gambar/rumah.png" target="iFrameData" />
+        <menu label="Data Induk" image="gambar/proses.png">
+            <menupopup>
+                <menuitem label="Transaksi" href="transaksi.zul" image="gambar/formulir.png"  target="iFrameData" />
+                <menuseparator />
+                <menu label="Laporan" image="gambar/folder.png" >
+                    <menupopup>
+                        <menuitem label="Rekap Transaksi" href="laporan/rekap.zul" target="iFrameData" image="gambar/formulir.png" />
+                    </menupopup>
+                </menu>
+            </menupopup>
+        </menu>
+        <menuitem id="mnLogout" label="Logout" image="gambar/logout.png" />
+    </menubar>
+    <iframe name="iFrameData" width="100%" height="88%"/>
+</window>
+</zk>

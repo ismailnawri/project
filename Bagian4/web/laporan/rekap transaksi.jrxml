@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="rekap transaksi"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="namapengguna" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="periode" isForPrompting="false" class="java.lang.String"/>
+
+	<field name="nominal" class="java.lang.Integer"/>
+	<field name="namaitem" class="java.lang.String"/>
+	<field name="alurkas " class="java.lang.Boolean"/>
+
+	<variable name="vnominal" class="java.lang.Integer" resetType="Report" calculation="Count">
+		<variableExpression><![CDATA[( $F{alurkas }.booleanValue() == true ? $F{nominal} : new java.lang.Integer (-1 * $F{nominal}.intValue()) )]]></variableExpression>
+	</variable>
+
+		<group  name="rekap transaksi" >
+			<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<group  name="tes" >
+			<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="104"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="198"
+						y="8"
+						width="200"
+						height="36"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{namapengguna}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="16"
+						y="9"
+						width="132"
+						height="26"
+						key="staticText-1"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Nama Pengguna]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="199"
+						y="52"
+						width="200"
+						height="36"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{periode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="16"
+						y="53"
+						width="156"
+						height="18"
+						key="staticText-2"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Priode]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="606"
+						y="32"
+						width="0"
+						height="0"
+						key="rectangle-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="28"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="16"
+						y="6"
+						width="77"
+						height="15"
+						key="staticText-3"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Nama Item]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="198"
+						y="8"
+						width="59"
+						height="14"
+						key="staticText-4"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Nominal]]></text>
+				</staticText>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="30"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="15"
+						y="5"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{namaitem}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="198"
+						y="5"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{vnominal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

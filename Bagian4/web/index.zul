@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" >
+   
+<div align="center">
+<window id="win" border="normal" style="margin-top:0px;border-bottom:4px solid gray;border-right:4px solid gray" title="Login" width="400px" apply="control.index">
+            <panel>
+            <panelchildren>
+                <grid>
+                    <columns>
+                        <column width="150px"/>
+                        <column/>
+                    </columns>
+                    <rows>
+                        <row spans="2" align="center">
+                           <vbox align="center">
+                               <label value="Personal Finance Management" style="font-size:18px;font-weight:bold;color:#1184d4;" />
+                               <image src="gambar/welcome.png"/>
+                           </vbox>
+                        </row>
+                        <row>
+                            <label value="Nama Login"/>
+                            <textbox id="txtboxUserID" width="150px" maxlength="15"/>
+                        </row>
+                        <row>
+                            <label value="Kata Sandi"/>
+                            <textbox id="txtboxPassword" width="150px" maxlength="15" type="password"/>
+                        </row>
+                        <row>
+                             <captcha id="cLogin" length="3" width="160px" />
+                             <vbox>
+                                 <label value="Ketik teks yang muncul di samping" />
+                                 <textbox id="txtCaptcha" width="200px" maxlength="3" />
+                             </vbox>
+                        </row>
+                        <row spans="2" align="center">
+                            <button id="btnLogin" label="Login" width="2%" image="gambar/login.png" />
+                        </row>
+                    </rows>
+                </grid>
+            </panelchildren>
+        </panel>
+</window>
+</div>
+</zk>

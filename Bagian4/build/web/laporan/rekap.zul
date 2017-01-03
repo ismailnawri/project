@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win" ?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window  width="800px" id="win" apply="control.rekap">
+    <panel zindex="2">
+        <panelchildren>
+            <grid>
+                <columns>
+                    <column width="150px"/>
+                    <column width="600px"/>
+                </columns>
+                <rows>
+                    <row spans="2" align="center">
+                        <label value="Rekap Transaksi"/>
+                    </row>
+                    <row>
+                        <label value="Tahun Transaksi mulai" style="font-weight:bold;color:red"/>
+                        <hbox>
+                            <intbox id="intMulai" />
+                            <label value=" s.d. " />
+                            <intbox id="intAkhir" />
+                            <button  id="btnTampil1" label="Tampilkan" image="../image/presentasi.png" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Tahun Transaksi dalam" style="font-weight:bold;color:red"/>
+                        <hbox>
+                            <textbox id="txtTahun" />
+                            <label value=" pisah dengan tanda koma, misal: 2010, 2011" />
+                            <button  id="btnTampil2" label="Tampilkan" image="../image/presentasi.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+            <jasperreport id="laporan" type="pdf" height="400px" />
+        </panelchildren>
+    </panel>
+</window>
+</zk>
